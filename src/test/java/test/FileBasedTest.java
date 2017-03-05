@@ -1,6 +1,5 @@
 package test;
 
-import array.LargestPermutation;
 import org.junit.Assert;
 
 import java.io.ByteArrayInputStream;
@@ -21,14 +20,16 @@ import java.net.URISyntaxException;
  */
 public class FileBasedTest {
 
-    public static void execute(Class testClass, Class targetClass, String inFile, String outFile) throws Exception {
+    public static void execute(Class<?> testClass,
+                               Class<?> targetClass,
+                               String inFile, String outFile) throws Exception {
         String input = readFileToString(testClass, inFile);
         String expected = readFileToString(testClass, outFile);
-        String actual = execute(LargestPermutation.class, input);
+        String actual = execute(targetClass, input);
         Assert.assertEquals("The actual and expected outputs do not match", expected.trim(), actual.trim());
     }
 
-    private static String execute(Class<LargestPermutation> targetClass, String input) throws IOException,
+    private static String execute(Class<?> targetClass, String input) throws IOException,
             URISyntaxException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         InputStream sysIn = System.in;
         PrintStream sysOut = System.out;
