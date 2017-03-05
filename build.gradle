@@ -1,0 +1,46 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile 'junit:junit:4.12'
+}
+
+sourceSets {
+    test {
+        output.resourcesDir = "build/classes/test"
+    }
+}
+/*
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+        }
+   }
+
+    test {
+        java {
+            srcDir 'test'
+        }
+
+        resources {
+            srcDir 'resources'
+        }
+    }
+}
+
+task copyTestResources(type: Copy) {
+    from "${projectDir}/test/resources"
+    into "${buildDir}/classes/test"
+}
+processTestResources.dependsOn copyTestResources
+*/
